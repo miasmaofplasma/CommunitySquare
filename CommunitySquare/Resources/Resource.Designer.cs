@@ -128,16 +128,22 @@ namespace CommunitySquare
 			public const int BoardActivity = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int homescreen = 2130903042;
+			public const int createBoard = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int login = 2130903043;
+			public const int homescreen = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Main = 2130903044;
+			public const int login = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int MessageView = 2130903045;
+			public const int Main = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int messageActivity = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int MessageView = 2130903047;
 			
 			static Layout()
 			{

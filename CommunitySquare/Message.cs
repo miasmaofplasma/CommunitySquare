@@ -9,20 +9,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using System.Xml.Serialization;
 
 namespace CommunitySquare
 {
-    [XmlRoot("UserInfo")]
-    [Serializable]
-    public class UserInfo
+    public class Message
     {
-        #region IXmlSerializable Members
+        public string Creator { get; set; }
+        public string Title { get; set;}
+        public string Body { get; set; }
         public string ID { get; set; }
-
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        #endregion
 
     }
 }

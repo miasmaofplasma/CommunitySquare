@@ -15,27 +15,40 @@ namespace CommunitySquare
     [Activity(Label = "Homescreen")]
     public class HomescreenActivity : Activity
     {
+        Button seeMessagesButton;
+        Button connectBeacon;
+        Button userInfoButton;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.homescreen);
 
-            var seeMessages = FindViewById<Button>(Resource.Id.b_seeMessage);
-            var connectBeaacon = FindViewById<Button>(Resource.Id.b_connectBeacon);
+            seeMessagesButton = FindViewById<Button>(Resource.Id.b_seeMessage);
+            connectBeacon = FindViewById<Button>(Resource.Id.b_connectBeacon);
+            userInfoButton = FindViewById<Button>(Resource.Id.b_accountSettings);
 
-            seeMessages.Click += delegate
-            {
-                StartActivity(typeof(BoardActivity));
-            };
+            seeMessagesButton.Click += SeeMessagesButton_Click;
+            connectBeacon.Click += ConnectBeaconButton_Click;
+            userInfoButton.Click += UserInfoButton_Click;
 
-            connectBeaacon.Click += delegate
-            {
-                StartActivity(typeof(Beacon));
-            };
-            
             
 
             // Create your application here
+        }
+
+        private void UserInfoButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ConnectBeaconButton_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(BeaconActivity));
+        }
+
+        private void SeeMessagesButton_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(BoardActivity));
         }
     }
 }

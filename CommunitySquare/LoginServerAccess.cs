@@ -14,10 +14,15 @@ using System.Threading.Tasks;
 
 namespace CommunitySquare
 {
-    public class LoginServerAccess
+    public class LoginServerAccess : ServerAccessAbstract
     {
-        public static MobileServiceClient MobileService = new MobileServiceClient("https://comsquare.azurewebsites.net");
+        private new MobileServiceClient MobileService;
 
+
+        public LoginServerAccess()
+        {
+            this.MobileService = base.MobileService;
+        }
 
         public async Task<UserInfo> AtteptLogin(string username, string password)
         {
@@ -56,7 +61,7 @@ namespace CommunitySquare
         public async Task<bool> CreateAccount(string username, string password)
         {
             bool userExist = await CheckUsername(username, password);
-            if(userExist == false)
+            if (userExist == false)
             {
                 await MobileService.GetTable<UserInfo>().InsertAsync(new UserInfo { UserName = username, Password = password });
                 UserInfo user = await AtteptLogin(username, password);
@@ -85,6 +90,10 @@ namespace CommunitySquare
             else return true;
         }
 
+        public async void DeleteAcount(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
 
 
     }

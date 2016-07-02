@@ -12,18 +12,38 @@ using Android.Widget;
 
 namespace CommunitySquare
 {
+
+    public enum boardType
+    {
+        mainBoard,
+        replyBoard,
+        userMessageBoard,
+    }
+
     [Activity(Label = "BoardActivity")]
     public class BoardActivity : ListActivity
     {
-        string[] testData = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "10", "11", "12" };
+        BoardServerAccess db_accessBoard;
+        MessageServerAccess db_accessMessage;
+
+        IBoard messageBoard;
+
+
+        string[] messageData;
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.BoardActivity);
+            
+            db_accessBoard = new BoardServerAccess();
+            db_accessMessage = new MessageServerAccess();
 
             ArrayAdapter adapter = new ArrayAdapter(this,
-                Resource.Layout.MessageView, testData);
+                Resource.Layout.MessageView, messageData);
             ListAdapter = adapter;
+
 
             // Create your application here
         }
@@ -31,7 +51,7 @@ namespace CommunitySquare
         protected override void OnListItemClick(ListView l, View v, int position, long id)
         {
             base.OnListItemClick(l, v, position, id);
-            Toast.MakeText(this, testData[position], 
+            Toast.MakeText(this, messageData[position], 
                 ToastLength.Short).Show();
         }
     }

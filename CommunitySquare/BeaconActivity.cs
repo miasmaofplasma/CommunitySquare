@@ -14,20 +14,24 @@ using EstimoteSdk;
 namespace CommunitySquare
 {
     [Activity(Label = "Beacon")]
-    public class Beacon : Activity, BeaconManager.IServiceReadyCallback
+    public class BeaconActivity : ListActivity, BeaconManager.IServiceReadyCallback
     {
         BeaconManager _beaconManager;
-        EstimoteSdk.Region region;
         private string scanId;
         TextView text;
         const string BeaconId = "com.refactored";
         bool isScanning = false;
 
 
+        private BoardServerAccess db_accessBoard;
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.beacons);
+
+            db_accessBoard = new BoardServerAccess();
 
             _beaconManager = new BeaconManager(this);
             _beaconManager.Connect(this);
@@ -58,6 +62,11 @@ namespace CommunitySquare
         {
             base.OnDestroy();
             _beaconManager.Disconnect();
+        }
+
+        protected override void OnListItemClick(ListView l, View v, int position, long id)
+        {
+            base.OnListItemClick(l, v, position, id);
         }
 
         public void OnServiceReady()
