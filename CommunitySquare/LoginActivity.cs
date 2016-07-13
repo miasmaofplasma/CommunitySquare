@@ -159,7 +159,16 @@ namespace CommunitySquare
         }
 
 
+        private void storeUsername()
+        {
 
+        }
+
+        private string loadUsername()
+        {
+
+            throw new NotImplementedException();
+        }
 
 
     }

@@ -15,16 +15,25 @@ namespace CommunitySquare
     [Activity(Label = "MessageActivity")]
     public class MessageActivity : ListActivity
     {
+        MessageServerAccess db_accesssMessage;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            db_accesssMessage = new MessageServerAccess();
 
             // Create your application here
+        }
+
+        private async void deleteMessage(string messageId)
+        {
+
         }
 
         protected override void OnListItemClick(ListView l, View v, int position, long id)
         {
             base.OnListItemClick(l, v, position, id);
         }
+
+
     }
 }

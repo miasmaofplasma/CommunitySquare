@@ -16,8 +16,7 @@ namespace CommunitySquare
 {
     public class LoginServerAccess : ServerAccessAbstract
     {
-        private new MobileServiceClient MobileService;
-
+        protected MobileServiceClient MobileService;
 
         public LoginServerAccess()
         {

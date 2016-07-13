@@ -14,24 +14,29 @@ namespace CommunitySquare
 {
     public class MainBoard : IBoard
     {
-        public List<Message> messageList;
 
-
-        protected string beaconID;
-        protected bool isPrivateBoard { get; set; }
+        [Newtonsoft.Json.JsonProperty("Id")]
+        public string id { get; set; }
+        public string beaconID { get; set; }
+        public bool isPrivateBoard { get; set; }
         public string BoardName { get; set; }
-        public string BoardId { get; set; }
-        public string Creator { get;}
-        private string Password { get; set; }
+        public string Creator { get; set; }
+        public string Password { get; set; }
+
+        [Newtonsoft.Json.JsonIgnore]
+        private List<Message> messageList;
 
 
-        public MainBoard(string beaconID, string userName)
+        public MainBoard(string beaconID, string userName, string boardName)
         {
             this.beaconID = beaconID;
-            messageList = new List<Message>();
+            this.BoardName = boardName;
+            Password = "";
             isPrivateBoard = false;
             Creator = userName;
         }
+
+        
 
 
         public string[] getMessageTitles()

@@ -21,16 +21,13 @@ namespace CommunitySquare
     }
 
     [Activity(Label = "BoardActivity")]
-    public class BoardActivity : ListActivity
+    public class BoardActivity : Activity
     {
         BoardServerAccess db_accessBoard;
         MessageServerAccess db_accessMessage;
+        private string typeOfBoard;
 
         IBoard messageBoard;
-
-
-        string[] messageData;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,19 +37,22 @@ namespace CommunitySquare
             db_accessBoard = new BoardServerAccess();
             db_accessMessage = new MessageServerAccess();
 
-            ArrayAdapter adapter = new ArrayAdapter(this,
-                Resource.Layout.MessageView, messageData);
-            ListAdapter = adapter;
+            typeOfBoard = Intent.GetStringExtra("_boardType") ?? "";
 
+            var boardStatus = FindViewById<TextView>(Resource.Id.BoardStatus);
+            boardStatus.Text = typeOfBoard;
+
+            if (typeOfBoard.Equals("MainBoard"))
+            {
+
+            }
+
+            
+
+
+            
 
             // Create your application here
-        }
-
-        protected override void OnListItemClick(ListView l, View v, int position, long id)
-        {
-            base.OnListItemClick(l, v, position, id);
-            Toast.MakeText(this, messageData[position], 
-                ToastLength.Short).Show();
         }
     }
 }

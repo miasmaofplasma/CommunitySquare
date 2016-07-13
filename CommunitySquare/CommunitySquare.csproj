@@ -77,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BeaconActivity.cs" />
+    <Compile Include="BeaconAdapter.cs" />
+    <Compile Include="BeaconView.cs" />
     <Compile Include="CreateBoardActivity.cs" />
     <Compile Include="IBoard.cs" />
     <Compile Include="MainBoard.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="MessageServerAccess.cs" />
     <Compile Include="NearableService.cs" />
     <Compile Include="ReplyBoard.cs" />
+    <Compile Include="ReplyMessage.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerAccessAbstract.cs" />

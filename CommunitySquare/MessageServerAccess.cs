@@ -37,6 +37,11 @@ namespace CommunitySquare
         {
             throw new NotImplementedException();
         }
+
+        public void deleteMessage(string messageId)
+        {
+
+        }
     }
 
 

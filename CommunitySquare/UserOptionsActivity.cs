@@ -46,5 +46,15 @@ namespace CommunitySquare
         {
             throw new NotImplementedException();
         }
+
+        private void storeNotificationSetting()
+        {
+
+        }
+
+        private string loadNotificaitonSetting()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
