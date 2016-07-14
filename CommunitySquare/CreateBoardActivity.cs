@@ -22,7 +22,7 @@ namespace CommunitySquare
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            createBoardButton.Click += CreateBoardButton_Click;
+            //createBoardButton.Click += CreateBoardButton_Click;
 
             // Create your application here
         }

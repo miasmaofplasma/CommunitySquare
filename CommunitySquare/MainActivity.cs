@@ -19,7 +19,7 @@ namespace CommunitySquare
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            StartActivity(typeof(BeaconActivity));
+            StartActivity(typeof(LoginActivity));
 
 
 

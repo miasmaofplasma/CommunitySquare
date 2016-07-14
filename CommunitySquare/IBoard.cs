@@ -7,8 +7,5 @@ namespace CommunitySquare
 {
     public interface IBoard
     {
-        string[] getMessageTitles();
-        List<Message> getMessages();
-        void addMessage(Message message);
     }
 }

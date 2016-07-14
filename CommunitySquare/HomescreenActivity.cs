@@ -31,6 +31,8 @@ namespace CommunitySquare
             connectBeacon.Click += ConnectBeaconButton_Click;
             userInfoButton.Click += UserInfoButton_Click;
 
+           
+
             
 
             // Create your application here
@@ -43,11 +45,15 @@ namespace CommunitySquare
 
         private void ConnectBeaconButton_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(BeaconActivity));
+            string username = Intent.GetStringExtra("_username");
+            Intent beaconActivity = new Intent(this, typeof(BeaconActivity));
+            beaconActivity.PutExtra("_username", username);
+            StartActivity(beaconActivity);
         }
 
         private void SeeMessagesButton_Click(object sender, EventArgs e)
         {
+
             StartActivity(typeof(BoardActivity));
         }
     }

@@ -80,6 +80,7 @@
     <Compile Include="BeaconAdapter.cs" />
     <Compile Include="BeaconView.cs" />
     <Compile Include="CreateBoardActivity.cs" />
+    <Compile Include="CreateMessageActivity.cs" />
     <Compile Include="IBoard.cs" />
     <Compile Include="MainBoard.cs" />
     <Compile Include="BoardActivity.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageActivity.cs" />
+    <Compile Include="MessageAdapter.cs" />
     <Compile Include="MessageServerAccess.cs" />
     <Compile Include="NearableService.cs" />
     <Compile Include="ReplyBoard.cs" />
@@ -128,6 +130,9 @@
     <AndroidResource Include="Resources\layout\createBoard.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\CreateMessageActivity.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -147,7 +152,14 @@
     <Folder Include="Resources\xml\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\MessageView.xml" />
+    <AndroidResource Include="Resources\layout\MessageView.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\EditTextStyle.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

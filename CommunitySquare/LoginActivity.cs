@@ -58,7 +58,9 @@ namespace CommunitySquare
                     if (created)
                     {
                         loginStatus.Text = "Success";
-                        StartActivity(typeof(HomescreenActivity));
+                        Intent homescreenActivity = new Intent(this, typeof(HomescreenActivity));
+                        homescreenActivity.PutExtra("_username", username);
+                        StartActivity(homescreenActivity);
                     }
                     else
                     {
@@ -111,7 +113,7 @@ namespace CommunitySquare
                         loginStatus.Text = "Login Success";
                         var activityPass = new Intent(this, typeof(HomescreenActivity));
                         activityPass.PutExtra("_username", username);
-                        StartActivity(typeof(HomescreenActivity));
+                        StartActivity(activityPass);
                     }
                     else //unsuccessful username/password combination , alert user
                     {

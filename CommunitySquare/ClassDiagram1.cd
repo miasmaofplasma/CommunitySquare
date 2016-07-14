@@ -3,7 +3,7 @@
   <Class Name="CommunitySquare.BeaconActivity" BaseTypeListCollapsed="true">
     <Position X="18.25" Y="12.75" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>AQAFAAAAAAAAAAAgAAAAAAAAICAAAAAIAEBAEAIAAAA=</HashCode>
+      <HashCode>AQAFAAAAAICAAIAgFAACACAAICQAAIAAAEBAEAIAAAQ=</HashCode>
       <FileName>BeaconActivity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -14,17 +14,10 @@
       <Method Name="MainBoard" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAABCBQAAAAAAAAAAAAAAQwAAIAAACEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABCAAAAAAAAAAAAAAAAAAAAIAAACEAAAAAAAAgA=</HashCode>
       <FileName>MainBoard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="CommunitySquare.BoardActivity">
-    <Position X="27.25" Y="12.75" Width="4" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAACAAAAAgAABAAAYAAAA=</HashCode>
-      <FileName>BoardActivity.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="CommunitySquare.BoardServerAccess">
     <Position X="5.75" Y="7.5" Width="4" />
@@ -64,7 +57,7 @@
   <Class Name="CommunitySquare.Message" BaseTypeListCollapsed="true">
     <Position X="28.25" Y="10" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgEAAAAABAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAEAAAAABABAAAAAAAAAAEAAAAAAAAgA=</HashCode>
       <FileName>Message.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,21 +66,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAABAAAAACAACAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>MessageActivity.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CommunitySquare.MessageServerAccess">
-    <Position X="10" Y="7.5" Width="4.25" />
-    <InheritanceLine Type="CommunitySquare.ServerAccessAbstract" FixedToPoint="true">
-      <Path>
-        <Point X="7.625" Y="6.353" />
-        <Point X="7.625" Y="7.125" />
-        <Point X="12.657" Y="7.125" />
-        <Point X="12.657" Y="7.5" />
-      </Path>
-    </InheritanceLine>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAAAAAAAAAAAACAAAAAAAACoAAAAAAAAAA=</HashCode>
-      <FileName>MessageServerAccess.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CommunitySquare.Resource">
@@ -130,7 +108,7 @@
       <Method Name="ReplyBoard" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAABQAAAQAAAAAAAABAQQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ReplyBoard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -158,11 +136,8 @@
   </Class>
   <Class Name="CommunitySquare.UserMessageBoard">
     <Position X="22.25" Y="7.5" Width="2.75" />
-    <Members>
-      <Method Name="UserMessageBoard" Hidden="true" />
-    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAABQAAAAAAACAIAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UserMessageBoard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -181,10 +156,32 @@
       <FileName>ReplyMessage.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="CommunitySquare.BoardActivity">
+    <Position X="27.25" Y="12.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAERAAAAAAQSAAAAAgEAAAAAIAAAA=</HashCode>
+      <FileName>BoardActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommunitySquare.MessageServerAccess">
+    <Position X="10" Y="7.5" Width="4.25" />
+    <InheritanceLine Type="CommunitySquare.ServerAccessAbstract" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="6.353" />
+        <Point X="7.625" Y="7.125" />
+        <Point X="12.657" Y="7.125" />
+        <Point X="12.657" Y="7.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAACAAAAAAACAAAAAAAACoAAAAAAAAAA=</HashCode>
+      <FileName>MessageServerAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="CommunitySquare.IBoard">
     <Position X="19" Y="5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABQAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IBoard.cs</FileName>
     </TypeIdentifier>
   </Interface>

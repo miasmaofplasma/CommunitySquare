@@ -49,9 +49,6 @@ namespace CommunitySquare
 
             viewList.ItemClick += ViewList_ItemClick;
             // Create your application here
-
-
-
         }
 
 
@@ -67,8 +64,10 @@ namespace CommunitySquare
             else
             {
                 var boardActivity = new Intent(this, typeof(BoardActivity));
+                string username = Intent.GetStringExtra("_username");
                 boardActivity.PutExtra("_boardType", "MainBoard");
                 boardActivity.PutExtra("_beaconID", t.BeaconId);
+                boardActivity.PutExtra("_username", username);
                 StartActivity(boardActivity);
             }
         }

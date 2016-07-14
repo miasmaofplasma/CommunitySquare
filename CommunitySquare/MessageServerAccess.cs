@@ -28,9 +28,13 @@ namespace CommunitySquare
             throw new NotImplementedException();
         }
 
-        public async Task<List<Message>> getMainBoardMessages(string BoardId)
+        public async Task<List<Message>> getMainBoardMessages(string BeaconID)
         {
-            throw new NotImplementedException();
+            List <Message> messageList =  await MobileClient.GetTable<Message>().Where
+                (p => p.BeaconID == BeaconID)
+                .ToListAsync();
+
+            return messageList;
         }
 
         public Task<List<Message>> getReplyMessages(string messageId)
@@ -38,7 +42,12 @@ namespace CommunitySquare
             throw new NotImplementedException();
         }
 
-        public void deleteMessage(string messageId)
+        public async void createMessage(Message message)
+        {
+            await MobileClient.GetTable<Message>().InsertAsync(message);
+        }
+
+        public async void deleteMessage(string messageId)
         {
 
         }

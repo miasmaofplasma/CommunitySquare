@@ -7,6 +7,11 @@ namespace CommunitySquare
 {
     public class ReplyMessage : Message
     {
+        public ReplyMessage(string creator, string beaconID, string title, string Body) : base(creator, beaconID, title, Body)
+        {
+
+        }
+
         public string ParentMessageID { get; set; }
     }
 }

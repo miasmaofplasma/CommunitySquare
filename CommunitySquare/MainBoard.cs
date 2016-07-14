@@ -23,8 +23,6 @@ namespace CommunitySquare
         public string Creator { get; set; }
         public string Password { get; set; }
 
-        [Newtonsoft.Json.JsonIgnore]
-        private List<Message> messageList;
 
 
         public MainBoard(string beaconID, string userName, string boardName)
@@ -34,24 +32,6 @@ namespace CommunitySquare
             Password = "";
             isPrivateBoard = false;
             Creator = userName;
-        }
-
-        
-
-
-        public string[] getMessageTitles()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Message> getMessages()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void addMessage(Message message)
-        {
-            throw new NotImplementedException();
         }
     }
 }
