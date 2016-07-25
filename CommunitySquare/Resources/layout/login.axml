@@ -11,18 +11,35 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2">
         <TextView
+            android:text="Welcome to Community Square"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+        <TextView
             android:text="Username:"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_username"
             android:layout_centerInParent="true"
-            android:layout_marginTop="150dp" />
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
     </LinearLayout>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/et_username" />
+        android:id="@+id/et_username"
+        android:singleLine="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" 
+        android:maxLength="20"
+        />
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
@@ -36,13 +53,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:id="@+id/tv_password" />
+            android:id="@+id/tv_password"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" 
+            android:maxLength="20"/>
     </LinearLayout>
     <EditText
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/et_password" />
+        android:id="@+id/et_password"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -68,5 +90,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/loginStatus" />
+        android:id="@+id/loginStatus"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 </LinearLayout>

@@ -22,6 +22,9 @@ namespace CommunitySquare
         [Newtonsoft.Json.JsonProperty("Id")]
         public string id { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("createdAt")]
+        public string createdAt { get; set; }
+
         public Message(string creator, string beaconID, string title, string Body)
         {
             this.Creator = creator;

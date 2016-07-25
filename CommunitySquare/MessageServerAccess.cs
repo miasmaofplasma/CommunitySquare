@@ -14,18 +14,22 @@ using System.Threading.Tasks;
 
 namespace CommunitySquare
 {
-    public class MessageServerAccess : ServerAccessAbstract
+    public class MessageServerAccess :ServerAccessAbstract
     {
         private MobileServiceClient MobileClient;
 
         public MessageServerAccess()
             {
-                MobileClient = base.MobileService;
+                MobileClient = new MobileServiceClient("https://comsquare.azurewebsites.net");
             }
 
         public async Task<List<Message>> getUserMessages(string username)
         {
-            throw new NotImplementedException();
+            List<Message> messageList = await MobileClient.GetTable<Message>().Where
+                 (p => p.Creator == username)
+                 .ToListAsync();
+
+            return messageList;
         }
 
         public async Task<List<Message>> getMainBoardMessages(string BeaconID)
@@ -37,9 +41,14 @@ namespace CommunitySquare
             return messageList;
         }
 
-        public Task<List<Message>> getReplyMessages(string messageId)
+        public async Task<List<ReplyMessage>> getReplyMessages(string messageId)
         {
-            throw new NotImplementedException();
+            List<ReplyMessage> replyMessageList = await MobileClient.GetTable<ReplyMessage>().Where
+                (p => p.ParentMessageID == messageId)
+                .ToListAsync();
+
+
+            return replyMessageList;
         }
 
         public async void createMessage(Message message)
@@ -47,10 +56,39 @@ namespace CommunitySquare
             await MobileClient.GetTable<Message>().InsertAsync(message);
         }
 
+        public async void createReplyMessage(ReplyMessage reply)
+        {
+            await MobileClient.GetTable<ReplyMessage>().InsertAsync(reply);
+        }
+
         public async void deleteMessage(string messageId)
         {
+            List<Message> messageList = await MobileClient.GetTable<Message>().Where(p => p.id == messageId).ToListAsync();
 
+            foreach(Message mes in messageList)
+            {
+                List<ReplyMessage> replyList = await MobileClient.GetTable<ReplyMessage>().Where(p => p.ParentMessageID == mes.id).ToListAsync();
+                {
+                    foreach(ReplyMessage rmes in replyList)
+                    {
+                        await MobileClient.GetTable<ReplyMessage>().DeleteAsync(rmes);
+                    }
+                    await MobileClient.GetTable<Message>().DeleteAsync(mes);
+                }
+                
+            }
         }
+
+        public async void deleteReplyMessage(string messageID)
+        {
+            List<ReplyMessage> replyList = await MobileClient.GetTable<ReplyMessage>().Where(p => p.id == messageID).ToListAsync();
+            foreach(ReplyMessage rmes in replyList)
+            {
+                await MobileClient.GetTable<ReplyMessage>().DeleteAsync(rmes);
+            }
+        }
+
+
     }
 
 

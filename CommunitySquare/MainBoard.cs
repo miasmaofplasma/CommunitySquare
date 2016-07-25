@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace CommunitySquare
 {
-    public class MainBoard : IBoard
+    public class MainBoard
     {
 
         [Newtonsoft.Json.JsonProperty("Id")]

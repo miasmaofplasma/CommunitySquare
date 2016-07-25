@@ -53,7 +53,7 @@ namespace CommunitySquare
                 view = _context.LayoutInflater.Inflate(Resource.Layout.MessageView, null);
             }
             view.FindViewById<TextView>(Resource.Id.textItem).Text = message.Title;
-            view.FindViewById<TextView>(Resource.Id.textItem2).Text = message.Creator;
+            view.FindViewById<TextView>(Resource.Id.textItem2).Text = message.Creator; 
             return view;
                  
         }

@@ -81,7 +81,6 @@
     <Compile Include="BeaconView.cs" />
     <Compile Include="CreateBoardActivity.cs" />
     <Compile Include="CreateMessageActivity.cs" />
-    <Compile Include="IBoard.cs" />
     <Compile Include="MainBoard.cs" />
     <Compile Include="BoardActivity.cs" />
     <Compile Include="BoardServerAccess.cs" />
@@ -93,14 +92,11 @@
     <Compile Include="MessageActivity.cs" />
     <Compile Include="MessageAdapter.cs" />
     <Compile Include="MessageServerAccess.cs" />
-    <Compile Include="NearableService.cs" />
-    <Compile Include="ReplyBoard.cs" />
     <Compile Include="ReplyMessage.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerAccessAbstract.cs" />
     <Compile Include="UserInfo.cs" />
-    <Compile Include="UserMessageBoard.cs" />
     <Compile Include="UserOptionsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +127,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\CreateMessageActivity.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MessageActivity2.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\UserOptions.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

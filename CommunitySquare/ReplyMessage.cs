@@ -13,5 +13,11 @@ namespace CommunitySquare
         }
 
         public string ParentMessageID { get; set; }
+
+        public Message ReturnBase()
+        {
+            return (Message) this;
+        }
+
     }
 }

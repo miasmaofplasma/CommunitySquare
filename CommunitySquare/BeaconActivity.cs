@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using EstimoteSdk;
 using Java.Util;
+using Android.Text;
 
 namespace CommunitySquare
 {
@@ -26,6 +27,7 @@ namespace CommunitySquare
         ArrayAdapter adapter;
         Dictionary<string, string> beaconsList;
         private int dropCount;
+        static int webCount = 0;
 
 
         private BoardServerAccess db_accessBoard;
@@ -48,6 +50,7 @@ namespace CommunitySquare
             beaconStatus.Text = "Finding beacons...";
 
             viewList.ItemClick += ViewList_ItemClick;
+
             // Create your application here
         }
 
@@ -55,21 +58,75 @@ namespace CommunitySquare
 
         private async void ViewList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            var viewList = sender as ListView;
-            var t = myBeacons[e.Position];
-            if(t.BoardName.Equals("Not Found"))
+            try
             {
-                await db_accessBoard.createNewBoard(t.BeaconId, new MainBoard(t.BeaconId, "Ryan", "TestBoard"));
+                var viewList = sender as ListView;
+                var t = myBeacons[e.Position];
+
+
+                if (t.BoardName.Equals("Not Found"))
+                {
+                    Intent createBoardActivity = new Intent(this, typeof(CreateBoardActivity));
+                    string username = Intent.GetStringExtra("_username");
+                    createBoardActivity.PutExtra("_beaconID", t.BeaconId);
+                    createBoardActivity.PutExtra("_username", username);
+                    StartActivity(createBoardActivity);
+                }
+                else
+                {
+                    MainBoard mb = await db_accessBoard.returnMainBoard(t.BeaconId);
+                    var boardActivity = new Intent(this, typeof(BoardActivity));
+                    string username = Intent.GetStringExtra("_username");
+                    boardActivity.PutExtra("_boardType", "MainBoard");
+                    boardActivity.PutExtra("_beaconID", t.BeaconId);
+                    boardActivity.PutExtra("_username", username);
+
+
+                    if (mb.isPrivateBoard)
+                    {
+                        webCount = 0;
+                        EditText input = new EditText(this);
+                        var alert = new AlertDialog.Builder(this);
+                        input.SetRawInputType(InputTypes.TextVariationPassword);
+                        alert.SetView(input);
+                        alert.SetTitle("Private Board");
+                        alert.SetMessage("Board is private, plase enter the password.");
+                        alert.SetPositiveButton("OK", (senderAlert, args) =>
+                        {
+                            if (mb.Password.Equals(input.Text))
+                            {
+                                StartActivity(boardActivity);
+                            }
+                            else
+                            {
+                                var alert2 = new AlertDialog.Builder(this);
+                                alert2.SetTitle("Private Board");
+                                alert2.SetMessage("Password Incorrect");
+                                alert2.SetPositiveButton("OK", (senderAlert2, args2) => { });
+                                alert2.Show();
+                            }
+
+                        });
+                        alert.SetNegativeButton("Cancel", (senderAlert, args) => { });
+                        alert.Show();
+
+                    }
+                    else
+                    {
+                        webCount = 0;
+                        StartActivity(boardActivity);
+                    }
+
+                }
             }
-            else
+            catch(Exception ex)
             {
-                var boardActivity = new Intent(this, typeof(BoardActivity));
-                string username = Intent.GetStringExtra("_username");
-                boardActivity.PutExtra("_boardType", "MainBoard");
-                boardActivity.PutExtra("_beaconID", t.BeaconId);
-                boardActivity.PutExtra("_username", username);
-                StartActivity(boardActivity);
+                if (ex is System.Net.WebException && webCount<3)
+                {
+                    ViewList_ItemClick(sender, e);
+                }
             }
+
         }
 
         protected override void OnStart()
@@ -98,8 +155,9 @@ namespace CommunitySquare
                 }
                 beaconStatus.Text = "";
                 dropCount = 0;
+
             }
-            else if(e.Nearables.Count == 0 && dropCount<5 && myBeacons.Count > 0)
+            else if(e.Nearables.Count < myBeacons.Count && dropCount<5 && myBeacons.Count > 0)
             {
                 dropCount++;
             }
@@ -118,8 +176,10 @@ namespace CommunitySquare
             {
                 try
                 {
+
                     beaconStatus.Text = "Loading Beacons";
                     BeaconView beaconView = myBeacons[i];
+                    //bool boardCreated = await db_accessBoard.createNewBoard(beaconView.BeaconId, new MainBoard(beaconView.BeaconId, "Ryan Barrett", "Test Board 1"));
                     string boardname = "Not Found";
                     if (beaconsList.ContainsKey(beaconView.BeaconId))
                     {

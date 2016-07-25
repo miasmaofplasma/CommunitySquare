@@ -72,9 +72,29 @@ namespace CommunitySquare
 
         }
 
-        public async void deleteBoard(string beaconId)
+        public async 
+        Task
+deleteBoard(string beaconId)
         {
-            throw new NotImplementedException();
+            List<MainBoard> mbList = await MobileService.GetTable<MainBoard>().Where(p => p.beaconID == beaconId).ToListAsync();
+            MainBoard mb = mbList[0];
+            List<Message> boardMessages = await MobileService.GetTable<Message>().Where(p => p.BeaconID == beaconId).ToListAsync();
+           foreach(Message mes in boardMessages)
+           {
+               await MobileService.GetTable<Message>().DeleteAsync(mes);
+           }
+            List<ReplyMessage> replyMessages = await MobileService.GetTable<ReplyMessage>().Where(p => p.BeaconID == beaconId).ToListAsync();
+            foreach(ReplyMessage rpmsg in replyMessages)
+            {
+                await MobileService.GetTable<ReplyMessage>().DeleteAsync(rpmsg);
+            }
+
+            await MobileService.GetTable<MainBoard>().DeleteAsync(mb);
+
+            
+
+            
+               
         }
     }
 }

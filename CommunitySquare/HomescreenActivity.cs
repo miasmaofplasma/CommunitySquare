@@ -18,14 +18,20 @@ namespace CommunitySquare
         Button seeMessagesButton;
         Button connectBeacon;
         Button userInfoButton;
+
+        string username;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            RequestWindowFeature(WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.homescreen);
+            
 
             seeMessagesButton = FindViewById<Button>(Resource.Id.b_seeMessage);
             connectBeacon = FindViewById<Button>(Resource.Id.b_connectBeacon);
             userInfoButton = FindViewById<Button>(Resource.Id.b_accountSettings);
+
+            username = Intent.GetStringExtra("_username");
 
             seeMessagesButton.Click += SeeMessagesButton_Click;
             connectBeacon.Click += ConnectBeaconButton_Click;
@@ -40,21 +46,28 @@ namespace CommunitySquare
 
         private void UserInfoButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var userInfo = new Intent(this, typeof(UserOptionsActivity));
+            userInfo.PutExtra("_username", username);
+            StartActivity(userInfo);
         }
 
         private void ConnectBeaconButton_Click(object sender, EventArgs e)
         {
-            string username = Intent.GetStringExtra("_username");
+
             Intent beaconActivity = new Intent(this, typeof(BeaconActivity));
             beaconActivity.PutExtra("_username", username);
+            beaconActivity.PutExtra("_boardType", "UserBoard");
             StartActivity(beaconActivity);
         }
 
         private void SeeMessagesButton_Click(object sender, EventArgs e)
         {
 
-            StartActivity(typeof(BoardActivity));
+            var seeUserMessageActivity = new Intent(this, typeof(BoardActivity));
+            seeUserMessageActivity.PutExtra("_username", username);
+            seeUserMessageActivity.PutExtra("_boardType", "UserBoard");
+            StartActivity(seeUserMessageActivity);
+
         }
     }
 }

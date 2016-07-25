@@ -1,7 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</LinearLayout>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/relativeLayout1">
+    <TextView
+        p1:text="Title"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_marginLeft="10dp"
+        p1:textSize="40px"
+        p1:layout_marginTop="15dp"
+        p1:id="@+id/textView1" />
+    <TextView
+        p1:text="Creator"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:gravity="right"
+        p1:layout_marginRight="20dp"
+        p1:layout_alignParentRight="true"
+        p1:layout_marginTop="15dp"
+        p1:layout_toRightOf="@id/textView1"
+        p1:id="@+id/tv_messageCreator" />
+    <TextView
+        p1:text="Text2"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:layout_weight="1"
+        p1:textSize="40px"
+        p1:layout_marginTop="15dp"
+        p1:layout_marginRight="10dp"
+        p1:layout_marginLeft="10dp"
+        p1:layout_below="@id/textView1"
+        p1:gravity="left"
+        p1:id="@+id/tv_messageTitle"
+        p1:padding="10dp"
+        p1:background="@drawable/EditTextStyle" />
+    <TextView
+        p1:text="Body"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:textSize="30px"
+        p1:layout_below="@id/tv_messageTitle"
+        p1:layout_marginTop="15dp"
+        p1:layout_marginLeft="10dp"
+        p1:id="@+id/textView3" />
+    <TextView
+        p1:text="Date"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:gravity="right"
+        p1:layout_marginRight="20dp"
+        p1:layout_alignParentRight="true"
+        p1:layout_below="@id/tv_messageTitle"
+        p1:layout_marginTop="15dp"
+        p1:layout_toRightOf="@id/textView3"
+        p1:id="@+id/tv_messageDate" />
+    <Button
+        p1:text="Reply"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_alignParentBottom="true"
+        p1:layout_alignParentRight="true"
+        p1:layout_marginBottom="20dp"
+        p1:layout_marginRight="10dp"
+        p1:id="@+id/b_replyMessage" />
+    <Button
+        p1:text="See Replies"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_alignParentBottom="true"
+        p1:layout_toLeftOf="@id/b_replyMessage"
+        p1:layout_marginBottom="20dp"
+        p1:id="@+id/b_seeReplies" />
+    <TextView
+        p1:text="Text4"
+        p1:layout_width="match_parent"
+        p1:layout_height="fill_parent"
+        p1:layout_below="@id/textView3"
+        p1:layout_above="@id/b_seeReplies"
+        p1:gravity="left"
+        p1:layout_marginTop="15dp"
+        p1:textSize="30px"
+        p1:layout_marginRight="10dp"
+        p1:layout_marginLeft="10dp"
+        p1:layout_marginBottom="25dp"
+        p1:padding="10dp"
+        p1:minHeight="150dp"
+        p1:id="@+id/tv_messageBody"
+        p1:background="@drawable/EditTextStyle" />
+    <Button
+        p1:text="Delete"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_alignParentBottom="true"
+        p1:layout_toLeftOf="@id/b_seeReplies"
+        p1:id="@+id/b_deleteMessage"
+        p1:layout_marginBottom="20dp" />
+    <Button
+        p1:text="Return"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_toLeftOf="@id/b_deleteMessage"
+        p1:layout_marginBottom="20dp"
+        p1:layout_alignParentBottom="true"
+        p1:id="@+id/b_returnBoard" />
+</RelativeLayout>

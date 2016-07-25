@@ -25,9 +25,8 @@
             p1:layout_width="wrap_content"
             p1:layout_height="match_parent"
             p1:gravity="center"
-            p1:id="@+id/textView1"
-            p1:maxLength="20" />
-        <EditText
+            p1:id="@+id/textView1" />
+        <TextView
             p1:id="@+id/et_messageTitle"
             p1:layout_marginLeft="15dp"
             p1:layout_marginBottom="20dp"
@@ -39,15 +38,13 @@
             p1:layout_height="wrap_content"
             p1:ellipsize="start"
             p1:gravity="left"
-            p1:background="@drawable/EditTextStyle" 
-            p1:padding="10dp"/>
+            p1:background="@drawable/EditTextStyle" />
         <TextView
             p1:text="Body:"
             p1:textSize="45px"
             p1:layout_centerHorizontal="true"
             p1:layout_width="wrap_content"
             p1:layout_height="match_parent"
-            p1:maxLength="200"
             p1:gravity="center"
             p1:id="@+id/textView2" />
         <EditText

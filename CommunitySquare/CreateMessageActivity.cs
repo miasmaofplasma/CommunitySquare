@@ -18,7 +18,9 @@ namespace CommunitySquare
         string username;
         string beaconID;
         string typeofBoard;
-        
+        string parentMessageID;
+
+
         Button createMessageButton;
         Button cancelMessageButton;
         EditText messageTitle;
@@ -34,6 +36,8 @@ namespace CommunitySquare
             username = Intent.GetStringExtra("_username") ?? "";
             beaconID = Intent.GetStringExtra("_beaconID") ?? "";
             typeofBoard = Intent.GetStringExtra("_boardType") ?? "";
+            parentMessageID = Intent.GetStringExtra("_parentMessageID") ?? "";
+
 
             createMessageButton = FindViewById<Button>(Resource.Id.b_messageCreate);
             cancelMessageButton = FindViewById<Button>(Resource.Id.b_messageCancel);
@@ -80,10 +84,23 @@ namespace CommunitySquare
             }
             else
             {
-                if (!username.Equals("") && !beaconID.Equals(""))
+                if (!username.Equals("") && !beaconID.Equals("") && parentMessageID.Equals(""))
                 {
                     db_accessMessage.createMessage(new Message(username, beaconID, messageTitle.Text, messageBody.Text));
                     Intent backToBoardActivity = new Intent(this, typeof(BoardActivity));
+                    backToBoardActivity.PutExtra("_username", username);
+                    backToBoardActivity.PutExtra("_beaconID", beaconID);
+                    backToBoardActivity.PutExtra("_boardType", typeofBoard);
+                    StartActivity(backToBoardActivity);
+                }
+                else if(!username.Equals("") && !beaconID.Equals(""))
+                {
+                    ReplyMessage reply = new ReplyMessage(username, beaconID, messageTitle.Text, messageBody.Text);
+                    reply.ParentMessageID = parentMessageID;
+                    createMessageButton.Text = parentMessageID;
+                    db_accessMessage.createReplyMessage(reply);
+                    Intent backToBoardActivity = new Intent(this, typeof(BoardActivity));
+                    createMessageButton.Text = "Create Message";
                     backToBoardActivity.PutExtra("_username", username);
                     backToBoardActivity.PutExtra("_beaconID", beaconID);
                     backToBoardActivity.PutExtra("_boardType", typeofBoard);
